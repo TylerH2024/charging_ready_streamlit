@@ -4,3 +4,4 @@ jinja2
 branca
 geopandas
 openrouteservice
+streamlit-folium

@@ -4,7 +4,7 @@ import streamlit as st
 import openrouteservice
 from folium.plugins import MarkerCluster
 from folium.plugins import FastMarkerCluster
-
+client=openrouteservice.Client(key=API_KEY)
 st.title("Charging Ready")
 
 noise_points=pd.read_csv("noise_points.csv")

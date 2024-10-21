@@ -8,7 +8,7 @@ from folium.plugins import FastMarkerCluster
 st.title("Charging Ready")
 
 noise_points=pd.read_csv("noise_points.csv")
-df_restaurant=pd.read_csv("df_restaurant.csv"
+df_restaurant=pd.read_csv("df_restaurant.csv")
 df_owners=pd.read_csv("df_owners.csv")
 df_fast_uk=df_restaurant[df_restaurant["category"] == "fast_food"]
                          

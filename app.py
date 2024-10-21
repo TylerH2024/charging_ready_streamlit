@@ -23,7 +23,7 @@ route_coords = route['features'][0]['geometry']['coordinates']
 route_coords2 = route2['features'][0]['geometry']['coordinates']
 route_coords3 = route3['features'][0]['geometry']['coordinates']
 route_coords4 = route4['features'][0]['geometry']['coordinates']
-
+st.markdown(route_coords)
 noise_points=pd.read_csv("noise_points.csv")
 df_restaurant=pd.read_csv("df_restaurant.csv")
 df_owners=pd.read_csv("df_owners.csv")

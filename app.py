@@ -49,6 +49,7 @@ noise_points=pd.read_csv("noise_points.csv")
 df_restaurant=pd.read_csv("df_restaurant.csv")
 df_owners=pd.read_csv("df_owners.csv")
 df_fast_uk=df_restaurant[df_restaurant["category"] == "fast_food"]
+noise_points1=pd.read_csv("noise_points(1).csv")
                          
 
 
@@ -113,7 +114,7 @@ for index, row in df_owners.iterrows():
 HeatMap(heat_data).add_to(map_potential_sites)
 st_folium(map_potential_sites)
 
-noise_subcluster = noise_points[noise_points['sub_cluster'] == -1]
+noise_subcluster = noise_points1[noise_points1['sub_cluster'] == -1]
 map_noise = Map(
     location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
     zoom_start=10
@@ -131,7 +132,7 @@ for idx, row in noise_subcluster.iterrows():
 
 st_folium(map_noise)
 
-noise_subcluster2 = noise_points[noise_points['sub_cluster'] == 2]
+noise_subcluster2 = noise_points1[noise_points1['sub_cluster'] == 2]
 map_noise2 = Map(
     location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
     zoom_start=10
@@ -147,5 +148,44 @@ for idx, row in noise_subcluster.iterrows():
         popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
     ).add_to(map_noise2)
 
+st_folium(map_noise2)
+
+noise_subcluster3 = noise_points1[noise_points1['sub_cluster'] == 4]
+
+map_noise = Map(
+    location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
+    zoom_start=6
+)
+for idx, row in noise_subcluster.iterrows():
+    folium.CircleMarker(
+        location=[row['latitude'], row['longitude']],
+        radius=5,
+        color='red',
+        fill=True,
+        fill_color='red',
+        fill_opacity=0.6,
+        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
+    ).add_to(map_noise3)
+
+st_folium(map_noise3)
+
+noise_subcluster3 = noise_points1[noise_points1['sub_cluster'] == 4]
+
+map_noise = Map(
+    location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
+    zoom_start=6
+)
+for idx, row in noise_subcluster.iterrows():
+    folium.CircleMarker(
+        location=[row['latitude'], row['longitude']],
+        radius=5,
+        color='red',
+        fill=True,
+        fill_color='red',
+        fill_opacity=0.6,
+        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
+    ).add_to(map_noise3)
+
+st_folium(map_noise3)
 
 

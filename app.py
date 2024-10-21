@@ -1,3 +1,4 @@
+from streamlit_folium import st_folium
 import pandas as pd
 from folium import Map, Icon, PolyLine, Marker
 import streamlit as st
@@ -109,4 +110,4 @@ for index, row in df_owners.iterrows():
 
 
 HeatMap(heat_data).add_to(map_potential_sites)
-map_potential_sites
+st_folium(map_potential_sites)

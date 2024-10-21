@@ -1,5 +1,5 @@
 import pandas as pd
-import folium
+from folium import Map, Icon, PolyLine, Marker
 import streamlit as st
 import openrouteservice
 from folium.plugins import MarkerCluster
@@ -41,39 +41,39 @@ route4=client.directions(coordinates=coordinates4, profile='driving-car', format
                           
 
 
-map_potential_sites = folium.Map(location=[noise_points['latitude'].mean(), noise_points['longitude'].mean()], zoom_start=5)
+map_potential_sites = Map(location=[noise_points['latitude'].mean(), noise_points['longitude'].mean()], zoom_start=5)
 
-folium.PolyLine(
+PolyLine(
     locations=[(coord[1], coord[0]) for coord in route_coords],
     color='blue', weight=5, opacity=0.8,
 ).add_to(map_potential_sites)
 
-folium.PolyLine(
+PolyLine(
     locations=[(coord[1], coord[0]) for coord in route_coords2],
     color='blue', weight=5, opacity=0.8,
 ).add_to(map_potential_sites)
 
-folium.PolyLine(
+PolyLine(
     locations=[(coord[1], coord[0]) for coord in route_coords3],
     color='blue', weight=5, opacity=0.8,
 ).add_to(map_potential_sites)
 
-folium.PolyLine(
+PolyLine(
     locations=[(coord[1], coord[0]) for coord in route_coords4],
     color='blue', weight=5, opacity=0.8,
 ).add_to(map_potential_sites)
 
-folium.Marker(belfast, popup="Belfast START", icon=folium.Icon(color='green')).add_to(map_potential_sites) #The Causeway
-folium.Marker(londonderry, popup="Londonderry END", icon=folium.Icon(color='red')).add_to(map_potential_sites)
+Marker(belfast, popup="Belfast START", icon=Icon(color='green')).add_to(map_potential_sites) #The Causeway
+Marker(londonderry, popup="Londonderry END", icon=Icon(color='red')).add_to(map_potential_sites)
 
-folium.Marker(bideford, popup="Bideford START", icon=folium.Icon(color='green')).add_to(map_potential_sites) #The Atlantic Highway
-folium.Marker(newquay, popup="Newquay END", icon=folium.Icon(color='red')).add_to(map_potential_sites)
+Marker(bideford, popup="Bideford START", icon=Icon(color='green')).add_to(map_potential_sites) #The Atlantic Highway
+Marker(newquay, popup="Newquay END", icon=Icon(color='red')).add_to(map_potential_sites)
 
-folium.Marker(kendal, popup="Kendal START", icon=folium.Icon(color='green')).add_to(map_potential_sites) #Kendal to Keswick
-folium.Marker(keswick, popup="Keswick END", icon=folium.Icon(color='red')).add_to(map_potential_sites)
+Marker(kendal, popup="Kendal START", icon=Icon(color='green')).add_to(map_potential_sites) #Kendal to Keswick
+Marker(keswick, popup="Keswick END", icon=Icon(color='red')).add_to(map_potential_sites)
 
-folium.Marker(st_davids, popup="St Davids Church START", icon=folium.Icon(color='green')).add_to(map_potential_sites) #The Coastal Way
-folium.Marker(st_hywyn, popup="St Hywyns Church END", icon=folium.Icon(color='red')).add_to(map_potential_sites)
+Marker(st_davids, popup="St Davids Church START", icon=Icon(color='green')).add_to(map_potential_sites) #The Coastal Way
+Marker(st_hywyn, popup="St Hywyns Church END", icon=Icon(color='red')).add_to(map_potential_sites)
 
 marker_cluster = MarkerCluster().add_to(map_potential_sites)
 marker_cluster2 = MarkerCluster().add_to(map_potential_sites)
@@ -83,17 +83,17 @@ heat_data = [[row['latitude'], row['longitude']] for index, row in noise_points.
 
 
 for index, row in df_fast_uk.iterrows():
-    folium.Marker(
+    Marker(
         location=[row['latitude'], row['longitude']],
         popup=row['restaurant_name'],
-        icon=folium.Icon(color='green', icon='cutlery')
+        icon=Icon(color='green', icon='cutlery')
     ).add_to(marker_cluster)
 
 for index, row in df_owners.iterrows():
-    folium.Marker(
+    Marker(
         location=[row['latitude'], row['longitude']],
         popup=row['ID'],
-        icon=folium.Icon(color='blue', icon='bolt')
+        icon=Icon(color='blue', icon='bolt')
     ).add_to(marker_cluster2)
 
 

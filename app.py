@@ -4,6 +4,8 @@ import streamlit as st
 import openrouteservice
 from folium.plugins import MarkerCluster
 from folium.plugins import FastMarkerCluster
+
+API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)
 st.title("Charging Ready")
 

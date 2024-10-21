@@ -9,6 +9,23 @@ API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)
 st.title("Charging Ready")
 
+kendal=(54.3280, -2.7460)
+keswick=(54.5994, -3.1340)
+st_davids=(51.882916, -5.264581)
+st_hywyn=(52.804869, -4.710975)
+bideford=(51.014885, -4.213305)
+newquay=(50.415365, -5.067994)
+belfast=(54.599899, -5.944937)
+londonderry=(55.019594, -7.341320)
+
+coordinates = [kendal[::-1], keswick[::-1]]
+
+coordinates2=[st_davids[::-1], st_hywyn[::-1]]
+
+coordinates3=[bideford[::-1], newquay[::-1]]
+
+coordinates4=[belfast[::-1], londonderry[::-1]]
+
 route=client.directions(coordinates=coordinates, profile='driving-car', format='geojson')
 
 route2=client.directions(coordinates=coordinates2, profile='driving-car', format='geojson')
@@ -29,22 +46,7 @@ df_restaurant=pd.read_csv("df_restaurant.csv")
 df_owners=pd.read_csv("df_owners.csv")
 df_fast_uk=df_restaurant[df_restaurant["category"] == "fast_food"]
                          
-kendal=(54.3280, -2.7460)
-keswick=(54.5994, -3.1340)
-st_davids=(51.882916, -5.264581)
-st_hywyn=(52.804869, -4.710975)
-bideford=(51.014885, -4.213305)
-newquay=(50.415365, -5.067994)
-belfast=(54.599899, -5.944937)
-londonderry=(55.019594, -7.341320)
 
-coordinates = [kendal[::-1], keswick[::-1]]
-
-coordinates2=[st_davids[::-1], st_hywyn[::-1]]
-
-coordinates3=[bideford[::-1], newquay[::-1]]
-
-coordinates4=[belfast[::-1], londonderry[::-1]]
 
 map_potential_sites = Map(location=[noise_points['latitude'].mean(), noise_points['longitude'].mean()], zoom_start=5)
 

@@ -106,13 +106,12 @@ for index, row in df_owners.iterrows():
         icon=Icon(color='blue', icon='bolt')
     ).add_to(marker_cluster2)
 
-
-
-
 HeatMap(heat_data).add_to(map_potential_sites)
 st_folium(map_potential_sites)
+
 option=st.selectbox("Select Cluster",(-1, 2, 4, 3))
 noise_subcluster = noise_points1[noise_points1['sub_cluster'] == option]
+
 map_noise = Map(
     location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
     zoom_start=10
@@ -127,6 +126,5 @@ for idx, row in noise_subcluster.iterrows():
         fill_opacity=0.6,
         popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
     ).add_to(map_noise)
-
-st_folium(map_noise)
+st_folium(map_noise, key=f"subcluster_map_{option}")
 

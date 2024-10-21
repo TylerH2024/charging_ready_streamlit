@@ -114,14 +114,6 @@ HeatMap(heat_data).add_to(map_potential_sites)
 st_folium(map_potential_sites)
 
 noise_subcluster = noise_points[noise_points['sub_cluster'] == -1]
-
-
-
-
-
-
-
-
 map_noise = Map(
     location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
     zoom_start=10
@@ -134,7 +126,26 @@ for idx, row in noise_subcluster.iterrows():
         fill=True,
         fill_color='red',
         fill_opacity=0.6,
-        popup=f"Noise point at ({row['latitude']}, {row['longitude']})"
+        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
     ).add_to(map_noise)
 
 st_folium(map_noise)
+
+noise_subcluster2 = noise_points[noise_points['sub_cluster'] == 2]
+map_noise2 = Map(
+    location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
+    zoom_start=10
+)
+for idx, row in noise_subcluster.iterrows():
+    CircleMarker(
+        location=[row['latitude'], row['longitude']],
+        radius=5,
+        color='red',
+        fill=True,
+        fill_color='red',
+        fill_opacity=0.6,
+        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
+    ).add_to(map_noise2)
+
+
+

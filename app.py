@@ -3,9 +3,7 @@ import pandas as pd
 from folium import Map, Icon, PolyLine, Marker, CircleMarker
 import streamlit as st
 import openrouteservice
-from folium.plugins import MarkerCluster
-from folium.plugins import FastMarkerCluster
-from folium.plugins import HeatMap
+from folium.plugins import MarkerCluster, HeatMap
 
 
 API_KEY=st.secrets["API_KEY"]

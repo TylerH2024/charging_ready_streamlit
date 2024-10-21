@@ -113,8 +113,8 @@ for index, row in df_owners.iterrows():
 
 HeatMap(heat_data).add_to(map_potential_sites)
 st_folium(map_potential_sites)
-
-noise_subcluster = noise_points1[noise_points1['sub_cluster'] == -1]
+option=st.selectbox("Select Cluster",(-1, 2, 4, 3))
+noise_subcluster = noise_points1[noise_points1['sub_cluster'] == option]
 map_noise = Map(
     location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
     zoom_start=10
@@ -131,61 +131,4 @@ for idx, row in noise_subcluster.iterrows():
     ).add_to(map_noise)
 
 st_folium(map_noise)
-
-noise_subcluster2 = noise_points1[noise_points1['sub_cluster'] == 2]
-map_noise2 = Map(
-    location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
-    zoom_start=10
-)
-for idx, row in noise_subcluster.iterrows():
-    CircleMarker(
-        location=[row['latitude'], row['longitude']],
-        radius=5,
-        color='red',
-        fill=True,
-        fill_color='red',
-        fill_opacity=0.6,
-        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
-    ).add_to(map_noise2)
-
-st_folium(map_noise2)
-
-noise_subcluster3 = noise_points1[noise_points1['sub_cluster'] == 4]
-
-map_noise = Map(
-    location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
-    zoom_start=6
-)
-for idx, row in noise_subcluster.iterrows():
-    folium.CircleMarker(
-        location=[row['latitude'], row['longitude']],
-        radius=5,
-        color='red',
-        fill=True,
-        fill_color='red',
-        fill_opacity=0.6,
-        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
-    ).add_to(map_noise3)
-
-st_folium(map_noise3)
-
-noise_subcluster3 = noise_points1[noise_points1['sub_cluster'] == 4]
-
-map_noise = Map(
-    location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
-    zoom_start=6
-)
-for idx, row in noise_subcluster.iterrows():
-    folium.CircleMarker(
-        location=[row['latitude'], row['longitude']],
-        radius=5,
-        color='red',
-        fill=True,
-        fill_color='red',
-        fill_opacity=0.6,
-        popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
-    ).add_to(map_noise3)
-
-st_folium(map_noise3)
-
 

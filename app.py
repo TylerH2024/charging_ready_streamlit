@@ -1,12 +1,12 @@
 from streamlit_folium import st_folium
 import pandas as pd
-from folium import Map, Icon, PolyLine, Marker
+from folium import Map, Icon, PolyLine, Marker, CircleMarker
 import streamlit as st
 import openrouteservice
 from folium.plugins import MarkerCluster
 from folium.plugins import FastMarkerCluster
 from folium.plugins import HeatMap
-from folium.plugins import CircleMarker
+
 
 API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)

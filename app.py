@@ -9,6 +9,14 @@ API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)
 st.title("Charging Ready")
 
+route=client.directions(coordinates=coordinates, profile='driving-car', format='geojson')
+
+route2=client.directions(coordinates=coordinates2, profile='driving-car', format='geojson')
+
+route3=client.directions(coordinates=coordinates3, profile='driving-car', format='geojson')
+
+route4=client.directions(coordinates=coordinates4, profile='driving-car', format='geojson')
+
 def convert_coords(coords):
     return [[coord[1], coord[0]] for coord in coords]
 route_coords = route['features'][0]['geometry']['coordinates']
@@ -37,16 +45,6 @@ coordinates2=[st_davids[::-1], st_hywyn[::-1]]
 coordinates3=[bideford[::-1], newquay[::-1]]
 
 coordinates4=[belfast[::-1], londonderry[::-1]]
-
-route=client.directions(coordinates=coordinates, profile='driving-car', format='geojson')
-
-route2=client.directions(coordinates=coordinates2, profile='driving-car', format='geojson')
-
-route3=client.directions(coordinates=coordinates3, profile='driving-car', format='geojson')
-
-route4=client.directions(coordinates=coordinates4, profile='driving-car', format='geojson')
-                          
-
 
 map_potential_sites = Map(location=[noise_points['latitude'].mean(), noise_points['longitude'].mean()], zoom_start=5)
 

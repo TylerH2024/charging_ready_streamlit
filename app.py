@@ -9,6 +9,11 @@ API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)
 st.title("Charging Ready")
 
+route_coords = route['features'][0]['geometry']['coordinates']
+route_coords2 = route2['features'][0]['geometry']['coordinates']
+route_coords3 = route3['features'][0]['geometry']['coordinates']
+route_coords4 = route4['features'][0]['geometry']['coordinates']
+
 noise_points=pd.read_csv("noise_points.csv")
 df_restaurant=pd.read_csv("df_restaurant.csv")
 df_owners=pd.read_csv("df_owners.csv")

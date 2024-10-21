@@ -9,6 +9,8 @@ API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)
 st.title("Charging Ready")
 
+def convert_coords(coords):
+    return [[coord[1], coord[0]] for coord in coords]
 route_coords = route['features'][0]['geometry']['coordinates']
 route_coords2 = route2['features'][0]['geometry']['coordinates']
 route_coords3 = route3['features'][0]['geometry']['coordinates']

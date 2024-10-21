@@ -4,6 +4,7 @@ import streamlit as st
 import openrouteservice
 from folium.plugins import MarkerCluster
 from folium.plugins import FastMarkerCluster
+from folium.plugins import HeatMap
 
 API_KEY=st.secrets["API_KEY"]
 client=openrouteservice.Client(key=API_KEY)
@@ -40,7 +41,7 @@ route_coords = route['features'][0]['geometry']['coordinates']
 route_coords2 = route2['features'][0]['geometry']['coordinates']
 route_coords3 = route3['features'][0]['geometry']['coordinates']
 route_coords4 = route4['features'][0]['geometry']['coordinates']
-st.markdown(route_coords)
+
 
 noise_points=pd.read_csv("noise_points.csv")
 df_restaurant=pd.read_csv("df_restaurant.csv")

@@ -130,6 +130,6 @@ if page == "Charging Routes":
 
 elif page == "Noise Points":
     st.title("Potential Charging Locations based on Noise Data")
-    _, _, _, noise_points1 = load_data()  # Re-load noise points data
+    _, _, _, noise_points1 = load_data() 
     map_noise = create_noise_map(noise_points1)
     st_folium(map_noise, key="map_noise")

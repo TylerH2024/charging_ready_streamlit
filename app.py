@@ -18,7 +18,8 @@ def load_data():
     noise_points = pd.read_csv("noise_points.csv")
     df_fast_uk = pd.read_csv("df_fast_food_combined.csv")
     df_owners = pd.read_csv("df_owners.csv")
-    return noise_points, df_fast_uk, df_owners
+    noise_points1 = pd.read_csv("noise_points (1).csv")
+    return noise_points, df_fast_uk, df_owners, noise_points1
 
 def create_route_map(df_fast_uk, df_owners, noise_points):
     kendal = (54.3280, -2.7460)

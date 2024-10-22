@@ -17,8 +17,8 @@ client = get_client()
 st.title("Charging Ready")
 
 @st.cache_data
-def get_route(client, coordinates):
-    return client.directions(coordinates=coordinates, profile='driving-car', format='geojson')
+def get_route(_client, coordinates):
+    return _client.directions(coordinates=coordinates, profile='driving-car', format='geojson')
 
 kendal = (54.3280, -2.7460)
 keswick = (54.5994, -3.1340)

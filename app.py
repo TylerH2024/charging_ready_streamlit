@@ -118,18 +118,18 @@ def create_noise_map(noise_points1):
 
 
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Select Page", ("Charging Routes", "Noise Points"))
+page = st.sidebar.radio("Select Page", ("Potential Charging Locations", "Clustered Charging Locations"))
 
 
 if page == "Charging Routes":
-    st.title("Charging Routes and EV Owners")
+    st.title("Potential Charging Locations")
     noise_points, df_fast_uk, df_owners, noise_points1 = load_data()
     map_potential_sites = create_route_map(df_fast_uk, df_owners, noise_points)
     st_folium(map_potential_sites, key="map_1")
 
 
 elif page == "Noise Points":
-    st.title("Potential Charging Locations based on Noise Data")
+    st.title("Potential Charging Locations - Scotland, Northern Ireland, Isle of Man")
     _, _, _, noise_points1 = load_data() 
     map_noise = create_noise_map(noise_points1)
     st_folium(map_noise, key="map_noise")

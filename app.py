@@ -50,7 +50,7 @@ route_coords4 = route4['features'][0]['geometry']['coordinates']
 @st.cache_data
 def load_data():
     noise_points = pd.read_csv("noise_points.csv")
-    df_fast_uk = pd.read_csv("df_fast_food_corrected")
+    df_fast_uk = pd.read_csv("df_fast_food_combined.csv")
     df_owners = pd.read_csv("df_owners.csv")
     noise_points1 = pd.read_csv("noise_points (1).csv")
     return noise_points, df_fast_uk, df_owners, noise_points1
@@ -99,14 +99,14 @@ for index, row in df_fast_uk.iterrows():
     Marker(
         location=[row['latitude'], row['longitude']],
         popup=row['restaurant_name'],
-        icon=Icon(color='red', icon='cutlery')
+        icon=Icon(color='green', icon='cutlery')
     ).add_to(map_potential_sites)
 
 for index, row in df_owners.iterrows():
     Marker(
         location=[row['latitude'], row['longitude']],
         popup=row['ID'],
-        icon=Icon(color='blue', icon='bolt')
+        icon=Icon(color='blue', icon='car', prefix="fa")
     ).add_to(marker_cluster)
 
 HeatMap(heat_data).add_to(map_potential_sites)

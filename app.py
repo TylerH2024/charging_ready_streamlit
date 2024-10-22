@@ -19,7 +19,7 @@ def load_data():
     df_fast_uk = pd.read_csv("df_fast_food_combined.csv")
     noise_points1 = pd.read_csv("noise_points (1).csv")
     def load_parquet("df_owners.csv"):
-    return pd.read_parquet("df_owners.csv")
+    return pd.read_parquet("df_owners.parquet")
     return noise_points, df_fast_uk, noise_points1
     
 

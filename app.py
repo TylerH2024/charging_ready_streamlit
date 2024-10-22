@@ -97,7 +97,7 @@ def create_route_map(df_fast_uk, df_owners, noise_points):
 def create_noise_map(noise_points1):
     option = st.selectbox("Select Cluster", (-1, 2, 4, 3))
     noise_subcluster = noise_points1[noise_points1['sub_cluster'] == option]
-
+st.write(noise_points1.columns)
     map_noise = Map(
         location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
         zoom_start=10

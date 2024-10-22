@@ -18,9 +18,8 @@ def load_data():
     noise_points = pd.read_csv("noise_points.csv")
     df_fast_uk = pd.read_csv("df_fast_food_combined.csv")
     noise_points1 = pd.read_csv("noise_points (1).csv")
-    def load_parquet("df_owners.csv"):
-    return pd.read_parquet("df_owners.parquet")
-    return noise_points, df_fast_uk, noise_points1
+    df_owners = pd.read_csv("df_owners.csv")
+    return noise_points, df_fast_uk, noise_points1, df_owners.csv
     
 
 def create_route_map(df_fast_uk, df_owners, noise_points):

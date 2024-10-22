@@ -85,7 +85,6 @@ def create_route_map(df_fast_uk, df_owners, noise_points):
     for index, row in df_owners.iterrows():
         Marker(
             location=[row['latitude'], row['longitude']],
-            popup=row['ID'],
             icon=Icon(color='blue', icon='car', prefix="fa")
         ).add_to(marker_cluster)
 

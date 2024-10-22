@@ -50,10 +50,9 @@ route_coords4 = route4['features'][0]['geometry']['coordinates']
 @st.cache_data
 def load_data():
     noise_points = pd.read_csv("noise_points.csv")
-    df_restaurant = pd.read_csv("df_restaurant.csv")
+    df_fast_uk = pd.read_csv("df_fast_food_corrected")
     df_owners = pd.read_csv("df_owners.csv")
     noise_points1 = pd.read_csv("noise_points (1).csv")
-    df_fast_uk = df_restaurant[df_restaurant["category"] == "fast_food"]
     return noise_points, df_fast_uk, df_owners, noise_points1
 
 noise_points, df_fast_uk, df_owners, noise_points1 = load_data()
@@ -93,7 +92,6 @@ Marker(st_davids, popup="St Davids Church START", icon=Icon(color='green')).add_
 Marker(st_hywyn, popup="St Hywyns Church END", icon=Icon(color='red')).add_to(map_potential_sites)
 
 marker_cluster = MarkerCluster().add_to(map_potential_sites)
-marker_cluster2 = MarkerCluster().add_to(map_potential_sites)
 
 heat_data = [[row['latitude'], row['longitude']] for index, row in noise_points.iterrows()]
 
@@ -101,15 +99,15 @@ for index, row in df_fast_uk.iterrows():
     Marker(
         location=[row['latitude'], row['longitude']],
         popup=row['restaurant_name'],
-        icon=Icon(color='green', icon='cutlery')
-    ).add_to(marker_cluster)
+        icon=Icon(color='red', icon='cutlery')
+    ).add_to(map_potential_sites)
 
 for index, row in df_owners.iterrows():
     Marker(
         location=[row['latitude'], row['longitude']],
         popup=row['ID'],
         icon=Icon(color='blue', icon='bolt')
-    ).add_to(marker_cluster2)
+    ).add_to(marker_cluster)
 
 HeatMap(heat_data).add_to(map_potential_sites)
 st_folium(map_potential_sites, key="map_1")

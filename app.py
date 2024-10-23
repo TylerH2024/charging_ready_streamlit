@@ -101,7 +101,7 @@ df_fast_uk = pd.read_csv("df_fast_food_combined.csv")
 def create_noise_map(noise_points1):
     option = st.selectbox("Select Cluster", (-1, 2, 4, 3))
     noise_subcluster = noise_points1[noise_points1['sub_cluster'] == option]
-    
+    marker_cluster = MarkerCluster().add_to(map_noise)
     map_noise = Map(
         location=[noise_subcluster['latitude'].mean(), noise_subcluster['longitude'].mean()],
         zoom_start=10

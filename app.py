@@ -91,7 +91,7 @@ def create_route_map(df_fast_uk, df_owners, noise_points):
     heat_data = [[row['latitude'], row['longitude']] for index, row in noise_points.iterrows()]
     HeatMap(heat_data).add_to(map_potential_sites)
 
-    return map_potential_sites
+    st_folium(map_potential_sites)
 
 noise_points1 = pd.read_csv("noise_points (1).csv")
 def create_noise_map(noise_points1):
@@ -114,7 +114,7 @@ def create_noise_map(noise_points1):
             popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
         ).add_to(map_noise)
 
-    return map_noise
+    st_folium(map_noise, key=f"subcluster_map_{option}")
 
 
 st.sidebar.title("Navigation")

@@ -114,7 +114,7 @@ def create_noise_map(noise_points1):
             popup=f"Potential Charging Location at ({row['latitude']}, {row['longitude']})"
         ).add_to(map_noise)
 
-     return map_noise
+    return map_noise
 
 
 st.sidebar.title("Navigation")

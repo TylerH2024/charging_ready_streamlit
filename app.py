@@ -96,7 +96,7 @@ def create_route_map(df_fast_uk, df_owners, noise_points):
    
 
 noise_points1 = pd.read_csv("noise_points (1).csv")
-df_owners=pd.read_csv("df_owners_new")
+df_owners=pd.read_csv("df_owners_new.csv")
 df_fast_uk = pd.read_csv("df_fast_food_combined.csv")
 def create_noise_map(noise_points1):
     option = st.selectbox("Select Cluster", (-1, 2, 4, 3))
